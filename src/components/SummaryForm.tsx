@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -22,10 +21,10 @@ import {
   Upload, 
   Save, 
   FileText, 
-  ListOrdered 
+  ListOrdered,
+  Trash2
 } from "lucide-react";
 
-// Form schema for summary
 const formSchema = z.object({
   title: z.string().min(3, { message: "O título deve ter pelo menos 3 caracteres" }),
   description: z.string().min(10, { message: "A descrição deve ter pelo menos 10 caracteres" }),
@@ -54,7 +53,6 @@ const SummaryForm: React.FC<SummaryFormProps> = ({ summary, onSave, onCancel, is
   );
   const [newTocItem, setNewTocItem] = useState("");
 
-  // Initialize form with existing data or empty values
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -69,7 +67,6 @@ const SummaryForm: React.FC<SummaryFormProps> = ({ summary, onSave, onCancel, is
   });
 
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
-    // Combine form values with file and table of contents
     const summaryData = {
       ...values,
       price: parseFloat(values.price).toFixed(2),

@@ -17,7 +17,7 @@ import {
   Upload, 
   Save, 
   Eye, 
-  FilePdf, 
+  FileText, 
   DollarSign 
 } from "lucide-react";
 import DashboardLogin from "../components/DashboardLogin";
@@ -238,9 +238,9 @@ const SummaryCard = ({ summary, onEdit, onDelete }) => {
           </div>
           <div className="flex items-center gap-1">
             {summary.hasPdf ? (
-              <FilePdf className="h-4 w-4 text-green-500" />
+              <FileText className="h-4 w-4 text-green-500" />
             ) : (
-              <FilePdf className="h-4 w-4 text-red-500" />
+              <FileText className="h-4 w-4 text-red-500" />
             )}
             <span>{summary.hasPdf ? "PDF Anexado" : "Sem PDF"}</span>
           </div>

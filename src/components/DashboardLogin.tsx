@@ -22,8 +22,14 @@ const formSchema = z.object({
   password: z.string().min(1, { message: "Senha é obrigatória" })
 });
 
+// Define explicit type for the credentials
+type LoginCredentials = {
+  username: string;
+  password: string;
+};
+
 type LoginProps = {
-  onLogin: (credentials: { username: string; password: string }) => void;
+  onLogin: (credentials: LoginCredentials) => void;
 };
 
 const DashboardLogin: React.FC<LoginProps> = ({ onLogin }) => {
@@ -36,7 +42,7 @@ const DashboardLogin: React.FC<LoginProps> = ({ onLogin }) => {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    onLogin(values);
+    onLogin(values as LoginCredentials);
   };
 
   return (
