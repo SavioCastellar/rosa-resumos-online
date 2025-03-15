@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Add our custom pink palette
+				rosa: {
+					50: '#fef1f6',
+					100: '#fee5ee',
+					200: '#ffcce0',
+					300: '#ffa2c7',
+					400: '#ff6da8',
+					500: '#ff3d88',
+					600: '#ff1f70',
+					700: '#ea0058',
+					800: '#c50049',
+					900: '#a40043'
 				}
 			},
 			borderRadius: {
@@ -84,11 +98,20 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'pink-gradient': 'linear-gradient(to right, #ffa2c7, #ff6da8)'
 			}
 		}
 	},
