@@ -3,10 +3,14 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = "https://sqxsmzgqwfspqhucguxl.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeHNtemdxd2ZzcHFodWNndXhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwNzk5ODksImV4cCI6MjA1NzY1NTk4OX0.aKtdg3J-uJAgoBx1GfsHMGXR-h8CIOMEKjO2XEn7rho";
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || "https://sqxsmzgqwfspqhucguxl.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = process.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeHNtemdxd2ZzcHFodWNndXhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwNzk5ODksImV4cCI6MjA1NzY1NTk4OX0.aKtdg3J-uJAgoBx1GfsHMGXR-h8CIOMEKjO2XEn7rho";
+const STRIPE_SECRET_KEY = process.env.VITE_STRIPE_SECRET_KEY || "";
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+// Export Stripe secret key for use in payment processing
+export const stripeSecretKey = STRIPE_SECRET_KEY;
